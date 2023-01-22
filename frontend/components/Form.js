@@ -9,20 +9,23 @@ export default class Form extends React.Component {
   }
 
   changeHandler =(e)=>{
+    const {value}=e.target;
     this.setState({
-      ...this.state,
-      todoInput:e.target.value
+      todoInput:value
     })
+    
   };
 
   submit=(e)=>{
     e.preventDefault();
-    console.log(this.state.todoInput);
-    //Need a submit method to come through here 
-    //from props to pass state upward.
+    this.props.addTodo(this.state.todoInput)
+    this.setState({
+      todoInput:''
+    })
   }
 
   render() {
+    //console.log('TodoInput:',this.state.todoInput);
     return (
       <form onSubmit={this.submit}>
         <input type='text' name='todoInput' value={this.state.todoInput} onChange={this.changeHandler}/>
