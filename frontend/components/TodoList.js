@@ -4,7 +4,6 @@ import Todo from './Todo'
 export default class TodoList extends React.Component {
   render() {
     const {todoList,displayCompleteds}=this.props
-    console.log(displayCompleteds);
     return (
       <>
         {

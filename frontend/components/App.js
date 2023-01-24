@@ -2,7 +2,6 @@ import React from 'react'
 import axios from 'axios';
 import TodoList from './TodoList';
 import Form from './Form';
-import { v4 as uuidv4 } from 'uuid';
 const URL = 'http://localhost:9000/api/todos'
 
 
@@ -36,7 +35,7 @@ export default class App extends React.Component {
 
   PostData(data) {
     return axios.post(URL, { name: data })
-      .then(res => {
+      .then(() => {
         this.fetchData();
 
       })
@@ -57,9 +56,9 @@ export default class App extends React.Component {
   }
 
 
-  toggleTodo = id => evt => {
+  toggleTodo = id => (evt) => {
     axios.patch(`${URL}/${id}`)
-      .then(res => {
+      .then(() => {
         this.setState({
           ...this.state,
           todoList: this.state.todoList.map(todo => {
